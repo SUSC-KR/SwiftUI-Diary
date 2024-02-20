@@ -11,7 +11,7 @@ import SwiftUI
 struct contentViewApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            enumView()
         }
     }
 }

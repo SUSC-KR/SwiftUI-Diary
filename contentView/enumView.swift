@@ -11,11 +11,13 @@ struct enumView: View {
     @ObservedObject private var viewModel = DiaryViewModel()
     
     @State var isClicked = false
-    @State var feelingIdx = 0
-    let feeling : [String] = ["좋아요", "슬퍼요", "기뻐요", "화나요"]
     @State var diary : String = ""
     @State var themaColor: Color = .indigo
+
     
+
+
+
     var body: some View {
         ZStack{
             
@@ -24,34 +26,15 @@ struct enumView: View {
         VStack{
             TitleView()
                 .padding(30)
-            HStack(spacing: 30.0){
-                //사용자가 사진 설정 가능
-                //하루를 나타내는 사진 삽입
-                Image("1x")
-                    .resizable()
-                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                    .overlay(Circle().stroke(.gray))
-                    .frame(width: 80, height: 80)
-                VStack{
-                    Text("민수민 님 오늘의 기분은 어때요?")
-                    Button(action: {
-                        if feelingIdx >= 3 {
-                            feelingIdx = 0
-                        }else{
-                            feelingIdx += 1
-                        }
-                    }, label: {
-                        ZStack{
-                            Capsule()
-                                .fill(.gray.opacity(2))
-                                .frame(width: 200, height: 50)
-                            Text(feeling[feelingIdx])
-                                .foregroundColor(.white)
-                        }
-                    })
-                }
-            }
+            
+            
+            // MARK: - 프로필
+            
+            
+            
             Spacer()
+            
+            // MARK: - 일기 쓰는 곳
             VStack{
                 ZStack{
                     TextEditor(text: $diary)
@@ -62,7 +45,7 @@ struct enumView: View {
                         .cornerRadius(25)
                         .scrollContentBackground(.hidden)
                     Button{
-                        
+//                        $viewModel.postData($diary)
                     }label:{
                         ZStack{
                             RoundedRectangle(cornerRadius: 25)
@@ -74,6 +57,9 @@ struct enumView: View {
                 }
                 .padding(20)
             }
+            
+            
+            // MARK: - 지난 하루
             Button{
                 isClicked.toggle()
             } label:{
@@ -116,18 +102,45 @@ struct enumView: View {
             }
         }
     }
+}
+
+
+struct ImagePicker: UIViewControllerRepresentable {
     
-    private struct TitleView:View {
-        fileprivate var body: some View {
-            Text("오늘은 어떤 하루였나요?")
-                .font(.largeTitle)
-                .fontWeight(.thin)
-                .frame(alignment: .top)
+    @Binding var image: UIImage?
+    @Environment(\.presentationMode) var mode
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        return picker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
+    }
+}
+
+extension ImagePicker {
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+        let parent: ImagePicker
+        
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            guard let image = info[.originalImage] as? UIImage else { return }
+            parent.image = image
+            parent.mode.wrappedValue.dismiss()
         }
     }
 }
     
-    
-    #Preview {
-        enumView()
-    }
+#Preview {
+    enumView()
+}

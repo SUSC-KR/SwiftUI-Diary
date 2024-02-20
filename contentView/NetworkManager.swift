@@ -12,6 +12,16 @@ class NetworkManager {
     //누군가가 초기화하지 않도록, 이 함수 내에서만 사용할 수 있도록 설정
     private init(){}
     
+    
+    // MARK: - POST
+    
+//    func postDiary(completed: @escaping(String?, String?) -> ()){
+//        
+//    }
+    
+    
+    
+    // MARK: - Request
     func requestDiary (completed: @escaping([Diary]?, String?)->()){
         let endPoint = "https://65c22e2df7e6ea59682ace4e.mockapi.io/diary"
         

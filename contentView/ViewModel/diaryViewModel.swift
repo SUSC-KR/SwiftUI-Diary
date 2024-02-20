@@ -20,4 +20,11 @@ class DiaryViewModel:ObservableObject {
             self.diaries = resDiary
         }
     }
+    
+    
+//    func postData(diary: Diary){
+//        NetworkManager.shared.postDiary(diary: diary){
+//            
+//        }
+//    }
 }

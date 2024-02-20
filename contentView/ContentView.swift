@@ -108,17 +108,8 @@ struct ContentView: View {
     }
 }
     
-    private struct TitleView:View {
-        fileprivate var body: some View {
-            Text("오늘은 어떤 하루였나요?")
-                .font(.largeTitle)
-                .fontWeight(.thin)
-                .frame(alignment: .top)
-        }
-    }
     
     
-    
-    #Preview {
-        ContentView()
-    }
+#Preview {
+    ContentView()
+}
