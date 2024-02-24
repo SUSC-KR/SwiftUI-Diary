@@ -8,102 +8,26 @@
 import SwiftUI
 
 struct enumView: View {
-    @ObservedObject private var viewModel = DiaryViewModel()
-    
-    @State var isClicked = false
-    @State var diary : String = ""
     @State var themaColor: Color = .indigo
 
-    
-
-
-
     var body: some View {
-        ZStack{
-            
-        }
-        //v는 세로
         VStack{
+            // MARK: - title
             TitleView()
                 .padding(30)
-            
-            
             // MARK: - 프로필
-            
-            
-            
+            ProfileView()
+                .padding(.horizontal)
             Spacer()
             
             // MARK: - 일기 쓰는 곳
-            VStack{
-                ZStack{
-                    TextEditor(text: $diary)
-                        .padding(.top, 50)
-                        .padding()
-                        .background(themaColor.opacity(0.4))
-                        .foregroundColor(Color.white)
-                        .cornerRadius(25)
-                        .scrollContentBackground(.hidden)
-                    Button{
-//                        $viewModel.postData($diary)
-                    }label:{
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(.white)
-                                .frame(width: 70, height: 35)
-                            Text("저장")
-                        }.position(x:  300, y: 35)
-                    }
-                }
-                .padding(20)
-            }
-            
+            TextView()
             
             // MARK: - 지난 하루
-            Button{
-                isClicked.toggle()
-            } label:{
-                ZStack{
-                    RoundedRectangle(cornerRadius: 40)
-                        .fill(themaColor.opacity(0.45))
-                        .ignoresSafeArea()
-                        .frame(height: isClicked ? 350 : 50)
-                    VStack{
-                        Text("지난 나의 하루들")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .lineLimit(0)
-                            .padding(.top, isClicked ? 20 : 10)
-                            .foregroundStyle(.white)
-                        if isClicked {
-                            VStack {
-                                List{
-                                    ForEach(viewModel.diaries, id: \.id) { diary in
-                                        Button{
-                                            isClicked = true
-                                        } label :{
-                                            ZStack{
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .fill(.white)
-                                                Text(diary.createdAt)
-                                            }.frame(width: 350, height: 50)
-                                        }}
-                                }
-                                .scrollContentBackground(.hidden)
-                                .padding()
-                                .onAppear(){
-                                    viewModel.requestData()
-                                }
-                                Spacer()
-                            }
-                        }
-                    }
-                }
-            }
+            LastDiaryView()
         }
     }
 }
-
 
 struct ImagePicker: UIViewControllerRepresentable {
     

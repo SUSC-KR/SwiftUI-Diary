@@ -14,7 +14,7 @@ class DiaryViewModel:ObservableObject {
     func requestData(){
         NetworkManager.shared.requestDiary{ resDiary, error in
             guard let resDiary = resDiary else {
-                print("Todo를 받아오는데 실패했습니다")
+                print("diary를 받아오는데 실패했습니다")
                 return
             }
             self.diaries = resDiary

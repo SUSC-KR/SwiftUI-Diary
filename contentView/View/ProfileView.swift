@@ -24,21 +24,31 @@ struct ProfileView: View {
         HStack(spacing: 30.0){
             //사용자가 사진 설정 가능
             //하루를 나타내는 사진 삽입
-            Image("1x")
-                .resizable()
-                .clipShape(Circle())
-                .overlay(Circle().stroke(.gray))
-                .frame(width: 80, height: 80)
-            Button {
-                showImagePicker.toggle()
-            } label: {
-                Text("image picker")
+            VStack{
+                    Button {
+                        showImagePicker.toggle()
+                    } label: {
+                        if let image = image {
+                        image
+                            .resizable()
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(.gray))
+                            .frame(width: 80, height: 80)
+                    } else {
+                        Image("1x")
+                            .resizable()
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(.gray))
+                            .frame(width: 80, height: 80)
+                    }
+                    }
+                    .sheet(isPresented: $showImagePicker, onDismiss: {
+                        loadImage()
+                    }) {
+                        ImagePicker(image: $selectedUIImage)
+                    }
             }
-            .sheet(isPresented: $showImagePicker, onDismiss: {
-                loadImage()
-            }) {
-                ImagePicker(image: $selectedUIImage)
-            }
+           
             VStack{
                 Text("민수민 님 오늘의 기분은 어때요?")
                 Button(action: {

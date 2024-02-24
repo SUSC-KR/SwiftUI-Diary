@@ -19,8 +19,6 @@ class NetworkManager {
 //        
 //    }
     
-    
-    
     // MARK: - Request
     func requestDiary (completed: @escaping([Diary]?, String?)->()){
         let endPoint = "https://65c22e2df7e6ea59682ace4e.mockapi.io/diary"
