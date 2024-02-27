@@ -11,46 +11,51 @@ struct LastDiaryView: View {
     @State var isClicked = false
     @State var diaryClicked = false
     @ObservedObject private var viewModel = DiaryViewModel()
-    @State var themaColor: Color = .indigo
+    @State var themaColor: Color = .indigo.opacity(0.45)
     
     var body: some View {
-        Button{
-            isClicked.toggle()
-        } label:{
-            ZStack{
-                RoundedRectangle(cornerRadius: 40)
-                    .fill(themaColor.opacity(0.45))
-                    .ignoresSafeArea()
-                    .frame(height: isClicked ? 350 : 50)
-                VStack{
-                    Text("지난 나의 하루들")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .lineLimit(0)
-                        .padding(.top, isClicked ? 20 : 10)
-                        .foregroundStyle(.white)
-                    if isClicked {
-                        VStack{
-                            List {
-                                ForEach(viewModel.diaries, id: \.id) { diary in
-                                    NavigationLink(destination: Text("detail")){
-                                        Text(diary.createdAt)
-                                    }
-                                }
-                            }
-                            .scrollContentBackground(.hidden)
-                            .padding()
-                            .onAppear(){
-                                viewModel.requestData()
+        ZStack{
+            RoundedRectangle(cornerRadius: 40)
+                .fill(themaColor)
+                .ignoresSafeArea()
+                .frame(height: isClicked ? 350 : 50)
+            VStack{
+                Button{
+                    isClicked.toggle()
+                } label:{
+                    ZStack{
+                        
+                        Text("지난 나의 하루들")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .lineLimit(0)
+                            .padding(.top, 10)
+                            .foregroundStyle(.white)
+                    }
+                }
+                if isClicked {
+                    NavigationView{
+                        List {
+                            ForEach(viewModel.diaries, id: \.id) { diary in
+                                NavigationLink(destination: Text(diary.title)){
+                                    Text(diary.createdAt)
+                                }                    
                             }
                         }
+                        .background(themaColor)
+                    }
+                    .frame(height: 250)
+                    .scrollContentBackground(.hidden)
+                    .onAppear(){
+                        viewModel.requestData()
                     }
                 }
             }
+            
         }
     }
 }
-
+        
 #Preview {
     LastDiaryView()
 }
