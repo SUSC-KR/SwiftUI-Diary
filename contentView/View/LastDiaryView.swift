@@ -39,7 +39,7 @@ struct LastDiaryView: View {
                             ForEach(viewModel.diaries, id: \.id) { diary in
                                 NavigationLink(destination: Text(diary.title)){
                                     Text(diary.createdAt)
-                                }                    
+                                }
                             }
                         }
                         .background(themaColor)

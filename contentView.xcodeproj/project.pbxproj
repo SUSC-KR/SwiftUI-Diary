@@ -19,6 +19,7 @@
 		0363B8BA2B7E2C0500959004 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363B8B92B7E2C0500959004 /* NetworkManager.swift */; };
 		0363B8BE2B89B99800959004 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363B8BD2B89B99800959004 /* TextView.swift */; };
 		0363B8C02B89C2C200959004 /* LastDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363B8BF2B89C2C200959004 /* LastDiaryView.swift */; };
+		0363B8C22B8DE1FB00959004 /* EditFeelingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363B8C12B8DE1FB00959004 /* EditFeelingView.swift */; };
 		036600C72B6BCB26006B3719 /* enumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036600C62B6BCB26006B3719 /* enumView.swift */; };
 		539EAC8B2B84D52A00B0022B /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539EAC8A2B84D52A00B0022B /* TitleView.swift */; };
 		539EAC8D2B84D61F00B0022B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539EAC8C2B84D61F00B0022B /* ProfileView.swift */; };
@@ -58,7 +59,8 @@
 		0363B8B92B7E2C0500959004 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0363B8BD2B89B99800959004 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		0363B8BF2B89C2C200959004 /* LastDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastDiaryView.swift; sourceTree = "<group>"; };
-		036600C62B6BCB26006B3719 /* enumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumView.swift; sourceTree = "<group>"; };
+		0363B8C12B8DE1FB00959004 /* EditFeelingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFeelingView.swift; sourceTree = "<group>"; };
+		036600C62B6BCB26006B3719 /* enumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumView.swift; sourceTree = "<group>"; tabWidth = 4; };
 		539EAC8A2B84D52A00B0022B /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		539EAC8C2B84D61F00B0022B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +175,7 @@
 				539EAC8C2B84D61F00B0022B /* ProfileView.swift */,
 				0363B8BD2B89B99800959004 /* TextView.swift */,
 				0363B8BF2B89C2C200959004 /* LastDiaryView.swift */,
+				0363B8C12B8DE1FB00959004 /* EditFeelingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				0363B8C02B89C2C200959004 /* LastDiaryView.swift in Sources */,
 				539EAC8B2B84D52A00B0022B /* TitleView.swift in Sources */,
 				033D52492B628BC4003BAB39 /* contentViewApp.swift in Sources */,
+				0363B8C22B8DE1FB00959004 /* EditFeelingView.swift in Sources */,
 				0363B8BE2B89B99800959004 /* TextView.swift in Sources */,
 				0363B8B82B7E250B00959004 /* diaryViewModel.swift in Sources */,
 				0363B8B52B7E1C0C00959004 /* Diary.swift in Sources */,
